@@ -10,11 +10,11 @@ import { Post } from '../interfaces/post.interface';
 export class MainPage {
   posts: Post[] = [
     {
-      name: 'Hans',
+      name: 'JollieBee',
       image: 'img/banana.jpg',
       likes: 95,
       liked: true,
-      comments: ['Tolle grüne Bananen', 'Immer noch grün'],
+      comments: ['Krasse Bananen', 'So schön grün'],
     },
     {
       name: 'Mandy',
