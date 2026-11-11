@@ -1,1 +1,33 @@
-<p>main-page works!</p>
+<main class="feed">
+  @for (post of posts; track $index) {
+    <article class="post">
+      <header class="post-header">
+        <span class="avatar">{{ post.name[0] }}</span>
+        <span class="post-name">{{ post.name }}</span>
+      </header>
+
+      <img class="post-image" [src]="post.image" [alt]="'Bild von ' + post.name" />
+
+      <div class="post-actions">
+        <button class="like-btn" (click)="toggleLike(post)">
+          <img [src]="post.liked ? 'img/heart-red.png' : 'img/heart-black.png'" alt="Gefällt mir" />
+        </button>
+        <span class="likes">{{ post.likes }} Likes</span>
+      </div>
+
+      <div class="comments">
+        @for (comment of post.comments; track $index) {
+          <p><b>{{ post.name }}</b> {{ comment }}</p>
+        } @empty {
+          <p class="no-comments">Noch keine Kommentare</p>
+        }
+      </div>
+
+      <div class="comment-form">
+        <input #commentInput type="text" placeholder="Kommentar schreiben ..."
+          (keyup.enter)="addComment(post, commentInput)" />
+        <button (click)="addComment(post, commentInput)">Posten</button>
+      </div>
+    </article>
+  }
+</main>
